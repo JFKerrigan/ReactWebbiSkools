@@ -3,16 +3,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import Quizzes from './components/Quizzes';
 
 const App = () => {
 	return (
 		<div>
 			<BrowserRouter>
-        <Routes>
-				  <Route path="/login" exact element={<Login />} />
-				  <Route path="/register" exact element={<Register />} />
-				  <Route path="/dashboard" exact element={<Dashboard />} />
-        </Routes>
+        		<Routes>
+				  <Route exact path="/login" element={<Login />} />
+				  <Route exact path="/register" element={<Register />} />
+				  <Route exact path="/dashboard" element={<Dashboard />} />
+				  <Route exact path='/quizzes' element={<Quizzes />} />
+        		</Routes>
 			</BrowserRouter>
 		</div>
 	)

@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 const Dashboard = () => {
     const [userInfo, setUserInfo] = useState({
@@ -32,6 +33,11 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <p>Hello {userInfo.name}</p>
             <h1>test</h1>
+            <button type="submit">
+                <Link to="/quizzes">
+                    Click here to view available quizzes
+                </Link>
+            </button>
         </div>
     )
 }

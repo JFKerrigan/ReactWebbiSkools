@@ -79,6 +79,10 @@ app.get('/api/dashboard', async (req, res) => {
     }
 })
 
+app.get('/quizzes', (req, res) =>{
+	
+})
+
 app.listen(1337, () => {
 	console.log('Server started on 1337')
 })
