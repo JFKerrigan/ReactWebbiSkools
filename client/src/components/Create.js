@@ -5,11 +5,13 @@ const Create = () => {
 	const [title, setTitle] = useState('')
     const [question, setQuestion] = useState([])
 
+
+	const handleChangeValue = event => {
+		setTitle(event.target.value);
+	  };
+	
 	const handleChangeArray = event => {
-		event.preventDefault();
-		const value = event.target.value;
-		console.log("handleChangeArray: ", event.target.value);
-		setQuestion(prev => [...prev, value]);
+		setQuestion(event.target.value);
 	};
 
 	async function registerQuiz(event) {
@@ -40,8 +42,8 @@ const Create = () => {
 			<form onSubmit={registerQuiz}>
                 <label>Quiz Title</label>
 				<input
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
+          			value={title.code}
+          			onChange={handleChangeValue}
 					type="text"
 					placeholder="Title"
 				/>
@@ -49,7 +51,7 @@ const Create = () => {
 				<div>
 					<label>Question</label>
 					<input
-						value={question}
+						value={question.code}
 						onChange={handleChangeArray}
 						type="text"
 						placeholder="Question"
