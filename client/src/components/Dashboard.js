@@ -38,6 +38,11 @@ const Dashboard = () => {
                     Click here to view available quizzes
                 </Link>
             </button>
+            <button type="submit">
+                <Link to="/create">
+                    Click here to create a new quiz
+                </Link>
+            </button>
         </div>
     )
 }
