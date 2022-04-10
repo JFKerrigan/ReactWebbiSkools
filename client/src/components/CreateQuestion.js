@@ -1,11 +1,20 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 
-const CreateQuestion = (question, setQuestion) => {
+const CreateQuestion = (props) => {
 
-	const handleInputChange = useCallback(event => {
-		setQuestion({...question, 
-			[event.target.name]: event.target.value})
-	}, [setQuestion]);
+	// const handleQInputChange = useCallback(event => {
+	// 	setQuestion({...question, 
+	// 		[event.target.name]: event.target.value})
+	// }, [setQuestion]);
+
+	// const handleQInputChange = event => {
+	// 	setQuestion(event.target.value)
+	// }
+
+	function handleQInputChange( event ) {
+		props.onChange(event.target.value)
+	}
+	
 	
     return (
           
@@ -15,7 +24,8 @@ const CreateQuestion = (question, setQuestion) => {
 					<input
 						name="question"
 						id="question"
-						onChange={handleInputChange}
+						value={props.value}
+						onChange={props.handleQInputChange}
 						type="text"
 						placeholder="Question"
 					/>
@@ -28,8 +38,7 @@ const CreateQuestion = (question, setQuestion) => {
 						placeholder="required" 
 						name="correctAnswer"
 						id="correctAnswer"
-						onChange={handleInputChange}
-						type="text"/>
+						/>
 					<br />
 					<label>Answers</label>
 					<br />
@@ -39,33 +48,29 @@ const CreateQuestion = (question, setQuestion) => {
 						placeholder="required"
 						name="answer1"
 						id="answer1"
-						onChange={handleInputChange}
-						type="text"/>
+						/>
 					<br />
 					<input 
 						type="text" 
 						required 
 						placeholder="required"
-						name="qanswer2"
+						name="answer2"
 						id="answer2"
-						onChange={handleInputChange}
-						type="text"/>
+						/>
 					<br />
 					<input 
 						type="text" 
 						placeholder="optional"
-						name="qanswer3"
+						name="answer3"
 						id="answer3"
-						onChange={handleInputChange}
-						type="text"/>
+						/>
 					<br />
 					<input
 						type="text" 
 						placeholder="optional"
-						name="qanswer3"
-						id="answer3"
-						onChange={handleInputChange}
-						type="text"/>					
+						name="answer4"
+						id="answer4"
+						/>					
 					<br />
         
         </div>

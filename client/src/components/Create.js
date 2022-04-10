@@ -4,21 +4,19 @@ import Button from './Button';
 
 const Create = () => {
 
-	const [title, setTitle] = useState('')
-	const [question, setQuestion] = useState({
-		question: '',
-		correctAnswer: '',
-		answer1: '',
-		answer2: '',
-		answer3: '',
-		answer4:''
-	})
+	const [title, setTitle] = useState('');
+	const [question, setQuestion] = useState('');
+
 	const [components, setComponents] = useState([""]); 
 
 
 	const handleChangeValue = event => {
 		setTitle(event.target.value);
-	  };
+	};
+
+	const handleQInputChange = event => {
+		setQuestion(event.target.value)
+	}
 
 	function addComponent() {
 		setComponents([...components, "Question"]) 
@@ -32,7 +30,7 @@ const Create = () => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({title: title}
+			body: JSON.stringify({title: title, question: question}
                 
 			),
 		})
@@ -57,11 +55,21 @@ const Create = () => {
 					placeholder="Title"
 				/>
 				<br />
-				<Button onClick={addComponent} text="Click here to create another question" />
+				{/* <label>Question</label>
+					<input
+						name="question"
+						id="question"
+						value={question.code}
+						onChange={handleQInputChange}
+						type="text"
+						placeholder="Question"
+					/>
+					<br /> */}
+				<Button onClick={addComponent} text="Click here to create another question"/>
 				<ol>
 						{components.map((item, i) => ( 
 							<li>
-								<CreateQuestion text={item} question={question} onChange={setQuestion}/>
+								<CreateQuestion question={question} onChange={handleQInputChange}/>
 							</li> 
 						))} 
 					

@@ -85,6 +85,7 @@ app.post('/api/create', async (req, res) => {
 	try {
 		await Quiz.create({
 			title: req.body.title,
+			question: req.body.question
 
 		})
 		res.json({ status: 'ok' })
