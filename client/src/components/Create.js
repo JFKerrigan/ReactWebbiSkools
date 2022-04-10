@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import CreateQuestion from './CreateQuestion';
+import Button from './Button';
 
 const Create = () => {
 
 	const [title, setTitle] = useState('')
-    const [question, setQuestion] = useState([])
+	const [question, setQuestion] = useState([''])
+	const [components, setComponents] = useState(["Sample Component"]); 
 
 
 	const handleChangeValue = event => {
@@ -11,8 +14,12 @@ const Create = () => {
 	  };
 	
 	const handleChangeArray = event => {
-		setQuestion(event.target.value);
+		setQuestion([event.target.value]);
 	};
+
+	function addComponent() {
+		setComponents([...components, "Sample Component"]) 
+	}
 
 	async function registerQuiz(event) {
 		event.preventDefault()
@@ -48,29 +55,9 @@ const Create = () => {
 					placeholder="Title"
 				/>
 				<br />
-				<div>
-					<label>Question</label>
-					<input
-						value={question.code}
-						onChange={handleChangeArray}
-						type="text"
-						placeholder="Question"
-					/>
-					<br />
-					<label>Answers</label>
-					<input type="text" required placeholder="required" />
-					<input type="text" required placeholder="required"/>
-					<input type="text" required placeholder="required"/>
-					<input type="text" placeholder="optional" />
-					<input type="text" placeholder="optional" />
-					<br />
-				</div>
-				<button type="submit">
-					Create another question for this quiz
-				</button>
-
-                
-                
+				<Button onClick={addComponent} text="Click here to create a question" />
+				{components.map((item, i) => ( <CreateQuestion text={item} /> ))} 
+			
 			</form>
 		</div>
         </div>
