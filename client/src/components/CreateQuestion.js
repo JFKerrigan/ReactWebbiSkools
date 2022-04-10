@@ -9,8 +9,10 @@ const CreateQuestion = (props) => {
 				<h3>{props.text}</h3>
 					<label>Question</label>
 					<input
-						// value={question}
-						// onChange={setQuestion()}
+						name="question"
+						value={props.question.value}
+						id="question"
+						onChange={props.formValues}
 						type="text"
 						placeholder="Question"
 					/>

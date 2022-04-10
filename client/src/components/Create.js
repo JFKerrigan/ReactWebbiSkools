@@ -5,20 +5,25 @@ import Button from './Button';
 const Create = () => {
 
 	const [title, setTitle] = useState('')
-	const [question, setQuestion] = useState([''])
-	const [components, setComponents] = useState(["Sample Component"]); 
+	const [question, setQuestion] = useState([{
+		id: "",
+		question: "",
+		correctAnswer: "",
+	}])
+	const [components, setComponents] = useState([""]); 
 
 
 	const handleChangeValue = event => {
 		setTitle(event.target.value);
 	  };
 	
-	const handleChangeArray = event => {
-		setQuestion([event.target.value]);
-	};
+	  const formValues = (event) => {
+        setQuestion([event.target.value])
+    };
+
 
 	function addComponent() {
-		setComponents([...components, "Sample Component"]) 
+		setComponents([...components, "Question"]) 
 	}
 
 	async function registerQuiz(event) {
@@ -31,7 +36,7 @@ const Create = () => {
 			},
 			body: JSON.stringify({
                 title: title.title,
-                question: question.heading
+                question: question.question
 			}),
 		})
 
@@ -56,8 +61,11 @@ const Create = () => {
 				/>
 				<br />
 				<Button onClick={addComponent} text="Click here to create a question" />
-				{components.map((item, i) => ( <CreateQuestion text={item} /> ))} 
-			
+				<ol>
+					
+						{components.map((item, i) => ( <li><CreateQuestion text={item} question={question} onChange={formValues}/></li> ))} 
+					
+				</ol>
 			</form>
 		</div>
         </div>
