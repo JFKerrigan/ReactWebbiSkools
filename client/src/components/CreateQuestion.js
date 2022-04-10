@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const CreateQuestion = (props) => {
+const CreateQuestion = (addQuestion) => {
+
+	const [question, setQuestion] = useState('');
+
+	const handleChange = (event) => {
+		setQuestion(event.target.value);
+	  };
 
 	// const handleQInputChange = useCallback(event => {
 	// 	setQuestion({...question, 
@@ -11,9 +17,9 @@ const CreateQuestion = (props) => {
 	// 	setQuestion(event.target.value)
 	// }
 
-	function handleQInputChange( event ) {
-		props.onChange(event.target.value)
-	}
+	// function handleQInputChange( event ) {
+	// 	props.onChange(event.target.value)
+	// }
 	
 	
     return (
@@ -24,8 +30,8 @@ const CreateQuestion = (props) => {
 					<input
 						name="question"
 						id="question"
-						value={props.value}
-						onChange={props.handleQInputChange}
+						value={question}
+						onChange={handleChange}
 						type="text"
 						placeholder="Question"
 					/>

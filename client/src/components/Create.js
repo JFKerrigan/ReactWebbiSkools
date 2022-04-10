@@ -5,7 +5,7 @@ import Button from './Button';
 const Create = () => {
 
 	const [title, setTitle] = useState('');
-	const [question, setQuestion] = useState('');
+	const [questions, setQuestions] = useState([]);
 
 	const [components, setComponents] = useState([""]); 
 
@@ -14,9 +14,12 @@ const Create = () => {
 		setTitle(event.target.value);
 	};
 
-	const handleQInputChange = event => {
-		setQuestion(event.target.value)
-	}
+	// const handleQInputChange = event => {
+	// 	setQuestion(event.target.value)
+	// }
+	function addQuestion(question) {
+		setQuestions((qs) => [...qs, question]);
+	  }
 
 	function addComponent() {
 		setComponents([...components, "Question"]) 
@@ -30,7 +33,7 @@ const Create = () => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({title: title, question: question}
+			body: JSON.stringify({title: title}
                 
 			),
 		})
@@ -69,7 +72,7 @@ const Create = () => {
 				<ol>
 						{components.map((item, i) => ( 
 							<li>
-								<CreateQuestion question={question} onChange={handleQInputChange}/>
+								<CreateQuestion addQuestion={addQuestion}/>
 							</li> 
 						))} 
 					
