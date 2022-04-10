@@ -5,11 +5,7 @@ import Button from './Button';
 const Create = () => {
 
 	const [title, setTitle] = useState('')
-	const [question, setQuestion] = useState([{
-		id: "",
-		question: "",
-		correctAnswer: "",
-	}])
+	const [question, setQuestion] = useState([])
 	const [components, setComponents] = useState([""]); 
 
 
@@ -18,7 +14,7 @@ const Create = () => {
 	  };
 	
 	  const formValues = (event) => {
-        setQuestion([event.target.value])
+        setQuestion(question.concat(event.target.value))
     };
 
 
@@ -62,8 +58,11 @@ const Create = () => {
 				<br />
 				<Button onClick={addComponent} text="Click here to create a question" />
 				<ol>
-					
-						{components.map((item, i) => ( <li><CreateQuestion text={item} question={question} onChange={formValues}/></li> ))} 
+						{components.map((item, i) => ( 
+							<li>
+								<CreateQuestion text={item} question={question} onChange={formValues}/>
+							</li> 
+						))} 
 					
 				</ol>
 			</form>
