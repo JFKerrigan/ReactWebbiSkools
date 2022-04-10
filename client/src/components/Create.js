@@ -5,18 +5,20 @@ import Button from './Button';
 const Create = () => {
 
 	const [title, setTitle] = useState('')
-	const [question, setQuestion] = useState([])
+	const [question, setQuestion] = useState({
+		question: '',
+		correctAnswer: '',
+		answer1: '',
+		answer2: '',
+		answer3: '',
+		answer4:''
+	})
 	const [components, setComponents] = useState([""]); 
 
 
 	const handleChangeValue = event => {
 		setTitle(event.target.value);
 	  };
-	
-	  const formValues = (event) => {
-        setQuestion(question.concat(event.target.value))
-    };
-
 
 	function addComponent() {
 		setComponents([...components, "Question"]) 
@@ -30,10 +32,9 @@ const Create = () => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({
-                title: title.title,
-                question: question.question
-			}),
+			body: JSON.stringify({title: title}
+                
+			),
 		})
 
 		const data = await response.json()
@@ -56,16 +57,18 @@ const Create = () => {
 					placeholder="Title"
 				/>
 				<br />
-				<Button onClick={addComponent} text="Click here to create a question" />
+				<Button onClick={addComponent} text="Click here to create another question" />
 				<ol>
 						{components.map((item, i) => ( 
 							<li>
-								<CreateQuestion text={item} question={question} onChange={formValues}/>
+								<CreateQuestion text={item} question={question} onChange={setQuestion}/>
 							</li> 
 						))} 
 					
 				</ol>
+				<input type="submit" value="Create" />
 			</form>
+			
 		</div>
         </div>
     )

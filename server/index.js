@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
+const Quiz = require('./models/quiz.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
@@ -79,9 +80,19 @@ app.get('/api/dashboard', async (req, res) => {
     }
 })
 
-app.get('/quizzes', (req, res) =>{
-	
+app.post('/api/create', async (req, res) => {
+	console.log(req.body)
+	try {
+		await Quiz.create({
+			title: req.body.title,
+
+		})
+		res.json({ status: 'ok' })
+	} catch (err) {
+		res.json({ status: 'error' })
+	}
 })
+
 
 app.listen(1337, () => {
 	console.log('Server started on 1337')
