@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import {Link} from 'react-router-dom';
+import Button from './Button'
 
 
 
@@ -26,11 +27,17 @@ const Quizzes = () => {
     return (
         <div>
             <h1>Test</h1>
-            <ul>
+           
                 {title.quiz?.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <>
+                    <input type='radio' name="titles" key={index} value={item}/>
+                    <h3>{item}</h3>
+                    </>
                 ))}
-            </ul>
+           
+            <button>
+                    <Link to='/dashboard'>Back to the dashboard </Link>
+            </button>
         </div>
     )
 }
