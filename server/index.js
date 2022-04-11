@@ -106,7 +106,7 @@ app.get('/api/quizzes', async (req, res) => {
 	  const quizDB = await Quiz.find().distinct("title");
   
 	  res.json({
-		quiz: quizDB
+		quizTitle: quizDB
 	  });
 	} catch (error) {
 	  res.json(

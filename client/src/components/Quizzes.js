@@ -25,7 +25,14 @@ const Quizzes = () => {
 	
     return (
         <div>
-            {title.data}
+            <h1>Test</h1>
+            <h2>{title.quizTitle.data}</h2>
+
+            <ul>
+                {title.quizTitle.map(item => (
+                    <li key={item}>{item}</li>
+                ))}
+            </ul>
         </div>
     )
 }
