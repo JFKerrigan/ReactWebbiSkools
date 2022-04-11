@@ -1,14 +1,19 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import CreateQuestion from './CreateQuestion';
 import Button from './Button';
 
 const Create = () => {
 
 	const [title, setTitle] = useState('');
-	const [questions, setQuestions] = useState([]);
-
-	const [components, setComponents] = useState([""]); 
-
+	const [question, setQuestion] = useState({
+		question: '',
+		correctAnswer: '',
+		answer1: '',
+		answer2: '',
+		answer3: '',
+		answer4: '',
+	});
 
 	const handleChangeValue = event => {
 		setTitle(event.target.value);
@@ -17,12 +22,11 @@ const Create = () => {
 	// const handleQInputChange = event => {
 	// 	setQuestion(event.target.value)
 	// }
-	function addQuestion(question) {
-		setQuestions((qs) => [...qs, question]);
-	  }
-
-	function addComponent() {
-		setComponents([...components, "Question"]) 
+	const addQuestion = (event) => {
+		setQuestion({
+			...question,
+			[event.target.name]: event.target.value
+		})
 	}
 
 	async function registerQuiz(event) {
@@ -33,7 +37,14 @@ const Create = () => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({title: title}
+			body: JSON.stringify({title: title, question: {
+				question: question.question,
+				correctAnswer: question.correctAnswer,
+				answer1: question.answer1,
+				answer2: question.answer2,
+				answer3: question.answer3,
+				answer4: question.answer4,
+			}}
                 
 			),
 		})
@@ -58,28 +69,69 @@ const Create = () => {
 					placeholder="Title"
 				/>
 				<br />
-				{/* <label>Question</label>
+				<label>Question</label>
 					<input
 						name="question"
 						id="question"
-						value={question.code}
-						onChange={handleQInputChange}
+						
+						onChange={addQuestion}
 						type="text"
 						placeholder="Question"
 					/>
-					<br /> */}
-				<Button onClick={addComponent} text="Click here to create another question"/>
-				<ol>
-						{components.map((item, i) => ( 
-							<li>
-								<CreateQuestion addQuestion={addQuestion}/>
-							</li> 
-						))} 
+					<br />
+					<label>Correct answer</label>
+					<br />
+					<input 
+						type="text" 
+						required 
+						placeholder="required" 
+						name="correctAnswer"
+						id="correctAnswer"
+						onChange={addQuestion}
+						/>
+					<br />
+					<label>Answers</label>
+					<br />
+					<input 
+						type="text" 
+						required 
+						placeholder="required"
+						name="answer1"
+						id="answer1"
+						onChange={addQuestion}
+						/>
+					<br />
+					<input 
+						type="text" 
+						required 
+						placeholder="required"
+						name="answer2"
+						id="answer2"
+						onChange={addQuestion}
+						/>
+					<br />
+					<input 
+						type="text" 
+						placeholder="optional"
+						name="answer3"
+						id="answer3"
+						onChange={addQuestion}
+						/>
+					<br />
+					<input
+						type="text" 
+						placeholder="optional"
+						name="answer4"
+						id="answer4"
+						onChange={addQuestion}
+						/>					
+					<br />
 					
-				</ol>
-				<input type="submit" value="Create" />
+				<input type="submit" value="Create Question" />
 			</form>
-			
+			<button>
+				<Link to='/dashboard'>Return to dashboard</Link>
+			</button>
 		</div>
         </div>
     )

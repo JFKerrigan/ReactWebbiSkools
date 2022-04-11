@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateQuestion = (addQuestion) => {
+const CreateQuestion = ({addQuestion,  idx}) => {
 
 	const [question, setQuestion] = useState('');
 
@@ -8,34 +8,31 @@ const CreateQuestion = (addQuestion) => {
 		setQuestion(event.target.value);
 	  };
 
-	// const handleQInputChange = useCallback(event => {
-	// 	setQuestion({...question, 
-	// 		[event.target.name]: event.target.value})
-	// }, [setQuestion]);
 
-	// const handleQInputChange = event => {
-	// 	setQuestion(event.target.value)
-	// }
-
-	// function handleQInputChange( event ) {
-	// 	props.onChange(event.target.value)
-	// }
+	  const handleSubmit = (e) => {
+		e.preventDefault();
+		addQuestion({ id: idx + 1, body: question });
+		setQuestion('');
+	  };
 	
-	
+	  
     return (
           
             
 		<div className="Component">
-					<label>Question</label>
-					<input
-						name="question"
-						id="question"
-						value={question}
-						onChange={handleChange}
-						type="text"
-						placeholder="Question"
-					/>
-					<br />
+      <form onSubmit={handleSubmit}>
+        <label></label>
+        <input
+          name="question"
+          id="question"
+          value={question}
+          onChange={handleChange}
+          type="text"
+          placeholder="Question"
+        />
+        <button>ADD QUESTION</button>
+      </form>
+	
 					<label>Correct answer</label>
 					<br />
 					<input 
@@ -78,9 +75,11 @@ const CreateQuestion = (addQuestion) => {
 						id="answer4"
 						/>					
 					<br />
-        
+
         </div>
     )
 }
+
+
 
 export default CreateQuestion

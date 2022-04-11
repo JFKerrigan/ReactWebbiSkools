@@ -85,7 +85,13 @@ app.post('/api/create', async (req, res) => {
 	try {
 		await Quiz.create({
 			title: req.body.title,
-			question: req.body.question
+			question: req.body.question.question,
+			correctAnswer: req.body.question.correctAnswer,
+			answer1: req.body.question.answer1,
+			answer2: req.body.question.answer2,
+			answer3: req.body.question.answer3,
+			answer4: req.body.question.answer4,
+			
 
 		})
 		res.json({ status: 'ok' })
@@ -94,6 +100,20 @@ app.post('/api/create', async (req, res) => {
 	}
 })
 
+
+app.get('/api/quizzes', async (req, res) => {
+	try {
+	  const quizDB = await Quiz.find().distinct("title");
+  
+	  res.json({
+		quiz: quizDB
+	  });
+	} catch (error) {
+	  res.json(
+		
+	  );
+	}
+  });
 
 app.listen(1337, () => {
 	console.log('Server started on 1337')

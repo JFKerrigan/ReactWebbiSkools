@@ -1,11 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
-const quizzes = () => {
+
+
+const Quizzes = () => {
+
+    const [title, setTitle] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:1337/api/quizzes')
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw response
+        })
+        .then(data => {
+            setTitle(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }, [])
+	
     return (
         <div>
-            <h1>quizzes test</h1>
+            {title.data}
         </div>
     )
 }
 
-export default quizzes
+export default Quizzes
