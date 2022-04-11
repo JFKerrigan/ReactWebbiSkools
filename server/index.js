@@ -100,19 +100,22 @@ app.post('/api/create', async (req, res) => {
 	}
 })
 
-
 app.get('/api/quizzes', async (req, res) => {
 	try {
 	  const quizDB = await Quiz.find().distinct("title");
   
 	  res.json({
-		quizTitle: quizDB
+		quiz: quizDB
 	  });
 	} catch (error) {
 	  res.json(
 		
 	  );
 	}
+  });
+
+  app.get("/*", (req, res) => {
+	res.send("404 error page doesn't exist, please return to the home page");
   });
 
 app.listen(1337, () => {

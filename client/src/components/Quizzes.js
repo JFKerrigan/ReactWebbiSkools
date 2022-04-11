@@ -26,11 +26,9 @@ const Quizzes = () => {
     return (
         <div>
             <h1>Test</h1>
-            <h2>{title.quizTitle.data}</h2>
-
             <ul>
-                {title.quizTitle.map(item => (
-                    <li key={item}>{item}</li>
+                {title.quiz?.map((item, index) => (
+                    <li key={index}>{item}</li>
                 ))}
             </ul>
         </div>
