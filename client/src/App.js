@@ -5,11 +5,14 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Quizzes from './components/Quizzes';
 import Create from './components/Create';
+import Logout from './components/Logout';
 
 const App = () => {
 	return (
 		<div>
+			
 			<BrowserRouter>
+			<Logout />
         		<Routes>
 				  <Route exact path="/login" element={<Login />} />
 				  <Route exact path="/register" element={<Register />} />

@@ -28,7 +28,8 @@ const Dashboard = () => {
             })
             console.log('please', data)
 		} else {
-			alert(data.error)
+            
+            window.location.href = '/login'
 		}
     }
     
