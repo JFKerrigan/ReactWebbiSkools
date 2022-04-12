@@ -116,9 +116,13 @@ app.get('/api/quizzes', async (req, res) => {
   });
 
 app.get('/api/viewQuizzes/:quiz', async(req, res) => {
-	console.log(req.params.quiz)
+	const quizTitle = req.params.quiz
+	console.log(quizTitle)
 	
 	try {
+		const questionsDB = await Quiz.find({title: quizTitle})
+		console.log(questionsDB)
+		res.json(questionsDB)
 
 	} catch (error) {
 		console.log(error)
