@@ -110,10 +110,20 @@ app.get('/api/quizzes', async (req, res) => {
 	  });
 	} catch (error) {
 	  res.json(
-		
+	
 	  );
 	}
   });
+
+app.get('/api/viewQuizzes/:quiz', async(req, res) => {
+	console.log(req.params.quiz)
+	
+	try {
+
+	} catch (error) {
+		console.log(error)
+	}
+})
 
   app.get("/*", (req, res) => {
 	res.send("404 error page doesn't exist, please return to the home page");

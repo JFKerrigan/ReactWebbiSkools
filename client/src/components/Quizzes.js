@@ -34,9 +34,12 @@ const Quizzes = () => {
                     <h3>{item}</h3>
                     </>
                 ))}
+                <button>
+                    <Link to={{
+                        pathname:`/viewQuiz/${quiz}`, 
+                        state: quiz }}>View more details for this Title</Link>
+                </button>
                 
-            
-      
             <button>
                     <Link to='/dashboard'>Back to the dashboard </Link>
             </button>

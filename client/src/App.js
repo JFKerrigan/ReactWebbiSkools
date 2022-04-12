@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Quizzes from './components/Quizzes';
 import Create from './components/Create';
 import Logout from './components/Logout';
+import ViewQuiz from './components/ViewQuiz';
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				  <Route exact path="/dashboard" element={<Dashboard />} />
 				  <Route exact path='/quizzes' element={<Quizzes />} />
 				  <Route exact path='/create' element={<Create />} />
+				  <Route path='/viewQuiz/:quiz' element={<ViewQuiz />} />
         		</Routes>
 			</BrowserRouter>
 		</div>
