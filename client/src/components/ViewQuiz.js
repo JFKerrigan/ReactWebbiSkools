@@ -41,28 +41,28 @@ const ViewQuiz = () => {
     }, [])
 
 
-//     const listItems = 
+    const listItems = 
 
-//     questions.map((d) => 
-//         <> 
-//         <li key={d.question}>{d.question}</li>
+    questions.questionsDB?.map((d) => 
+        <> 
+        <li key={d.question}>{d.question}</li>
         
-//             <ol type='A'>
-//                 <li key={d.correctAnswer}>{d.correctAnswer}</li>
-//                 <li key={d.answer1}>{d.answer1}</li>
-//                 <li key={d.answer2}>{d.answer2}</li>
-//                 <li key={d.answer3}>{d.answer3}</li>
-//                 <li key={d.answer4}>{d.answer4}</li>      
-//             </ol>
+            <ol type='A'>
+                <li key={d.correctAnswer}>{d.correctAnswer}</li>
+                <li key={d.answer1}>{d.answer1}</li>
+                <li key={d.answer2}>{d.answer2}</li>
+                <li key={d.answer3}>{d.answer3}</li>
+                <li key={d.answer4}>{d.answer4}</li>      
+            </ol>
 
-//         </>
-// )
+        </>
+)
 
     return (
         <div>
             view quiz test
             <ol>
-                {/* {listItems} */}
+                {listItems}
             </ol>
         </div>
     )
