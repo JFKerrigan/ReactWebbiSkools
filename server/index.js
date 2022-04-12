@@ -6,6 +6,7 @@ const User = require('./models/user.model')
 const Quiz = require('./models/quiz.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const { db } = require('./models/user.model')
 
 app.use(cors())
 app.use(express.json())
@@ -92,8 +93,7 @@ app.post('/api/create', async (req, res) => {
 			answer2: req.body.question.answer2,
 			answer3: req.body.question.answer3,
 			answer4: req.body.question.answer4,
-			
-
+	
 		})
 		res.json({ status: 'ok' })
 	} catch (err) {
@@ -104,7 +104,7 @@ app.post('/api/create', async (req, res) => {
 app.get('/api/quizzes', async (req, res) => {
 	try {
 	  const quizDB = await Quiz.find().distinct("title");
-  
+	  
 	  res.json({
 		quiz: quizDB
 	  });
@@ -116,13 +116,18 @@ app.get('/api/quizzes', async (req, res) => {
   });
 
 app.get('/api/viewQuizzes/:quiz', async(req, res) => {
+	const token = req.headers['x-access-token']
 	const quizTitle = req.params.quiz
 	console.log(quizTitle)
 	
+
 	try {
 		const questionsDB = await Quiz.find({title: quizTitle})
-		console.log(questionsDB)
-		res.json(questionsDB)
+        const decoded = jwt.verify(token, 'secret123')
+        const email = decoded.email
+        const user = await User.findOne({email: email })
+		res.json({questionsDB: questionsDB, access: user.accessLevel})
+		console.log({questionsDB: questionsDB, access: user.accessLevel})
 
 	} catch (error) {
 		console.log(error)

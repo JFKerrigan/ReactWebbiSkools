@@ -12,8 +12,9 @@ const Quiz = new mongoose.Schema(
 
     },
 
-	{ collection: 'Quiz' }
+	{ collection: 'Quiz' }, {minimize: true}
 )
+
 
 const model = mongoose.model('Quiz', Quiz)
 

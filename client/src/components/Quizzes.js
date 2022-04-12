@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-const Quizzes = () => {
+const Quizzes = (props) => {
 
     const [title, setTitle] = useState([]);
     const [quiz, setQuiz] = useState('');
 
-    useEffect(() => {
+
+    useEffect((props) => {
         fetch('http://localhost:1337/api/quizzes')
         .then(response => {
             if (response.ok) {
@@ -16,6 +17,7 @@ const Quizzes = () => {
         })
         .then(data => {
             setTitle(data)
+         
         })
         .catch(error => {
             console.log(error)
@@ -37,7 +39,8 @@ const Quizzes = () => {
                 <button>
                     <Link to={{
                         pathname:`/viewQuiz/${quiz}`, 
-                        state: quiz }}>View more details for this Title</Link>
+                        state: quiz
+                         }}>View more details for this Title</Link>
                 </button>
                 
             <button>

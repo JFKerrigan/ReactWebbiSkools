@@ -44,13 +44,13 @@ const Dashboard = () => {
             <h1>test</h1>
             {accessLevel.access === 'edit' &&                
             <button type="submit">
-                <Link to="/create">
+                <Link to="/create" accessLevel={accessLevel}>
                     Click here to create a new quiz
                 </Link>
             </button>         
             }
             <button type="submit">
-                <Link to="/quizzes">
+                <Link to="/quizzes" accessLevel={accessLevel}>
                     Click here to view available quizzes
                 </Link>
             </button>
