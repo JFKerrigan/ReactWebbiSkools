@@ -4,9 +4,9 @@ import {useParams} from 'react-router-dom'
 
 
 const ViewQuiz = (props) => {
-    const [questions, setQuestions] = useState({})
+    const [questions, setQuestions] = useState([])
     const {quiz} = useParams()
-    console.log(quiz)
+  
     useEffect(() => {
         fetch(`http://localhost:1337/api/viewQuizzes/${quiz}`)
         .then(response => {
@@ -21,13 +21,20 @@ const ViewQuiz = (props) => {
         .catch(error => {
             console.log(error)
         })
-        console.log(questions)
+        
     }, [])
+    
+    const listItems = questions.map((d) => <li key={d.question}>{d.question}</li>)
 
     return (
         <div>
             view quiz test
-     
+            <ol>
+                {listItems}
+            {/* {questions.map(({question}, item) => (
+                    <li name="questions" key={question._id} value={item.question}/>   
+            ))} */}
+            </ol>
         </div>
     )
 }
