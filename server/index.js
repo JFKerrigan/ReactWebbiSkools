@@ -64,6 +64,7 @@ app.post('/api/login', async (req, res) => {
 	}
 })
 
+
 app.get('/api/dashboard', async (req, res) => {
     const token = req.headers['x-access-token']
 
@@ -71,8 +72,8 @@ app.get('/api/dashboard', async (req, res) => {
         const decoded = jwt.verify(token, 'secret123')
         const email = decoded.email
         const user = await User.findOne({email: email })
-        console.log({user: user.name})
-        return res.json({ status: 'ok', name: user.name})
+        console.log('Kerrigan', {user: user.name}, {user: user.accessLevel})
+        return res.json({ status: 'ok', name: user.name, access: user.accessLevel})
 
     } catch (error) {
         console.log(error)

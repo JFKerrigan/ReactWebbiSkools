@@ -5,6 +5,9 @@ const Dashboard = () => {
     const [userInfo, setUserInfo] = useState({
         name: '',
     })
+    const [accessLevel, setAccessLevel] = useState({
+        access: '',
+    })
 
     async function populateUser() {
 		const req = await fetch('http://localhost:1337/api/dashboard', {
@@ -17,8 +20,13 @@ const Dashboard = () => {
 		if (data.status === 'ok') {
             setUserInfo({
                 ...userInfo,
-                name: data.name})
-            console.log(data.status, data.name)
+                name: data.name,
+                })
+            setAccessLevel({
+                ...accessLevel,
+                access: data.access
+            })
+            console.log('please', data)
 		} else {
 			alert(data.error)
 		}
@@ -26,6 +34,7 @@ const Dashboard = () => {
     
     useEffect(() => {
         populateUser()
+
     },[])
 
     return (
@@ -33,16 +42,19 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <p>Hello {userInfo.name}</p>
             <h1>test</h1>
+            {accessLevel.access === 'edit' &&                
+            <button type="submit">
+                <Link to="/create">
+                    Click here to create a new quiz
+                </Link>
+            </button>         
+            }
             <button type="submit">
                 <Link to="/quizzes">
                     Click here to view available quizzes
                 </Link>
             </button>
-            <button type="submit">
-                <Link to="/create">
-                    Click here to create a new quiz
-                </Link>
-            </button>
+
         </div>
     )
 }

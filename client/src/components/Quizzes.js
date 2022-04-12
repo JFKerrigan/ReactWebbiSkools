@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import Button from './Button'
-
-
 
 const Quizzes = () => {
 
@@ -38,6 +35,7 @@ const Quizzes = () => {
             <button>
                     <Link to='/dashboard'>Back to the dashboard </Link>
             </button>
+
         </div>
     )
 }
