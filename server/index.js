@@ -134,6 +134,18 @@ app.get('/api/viewQuizzes/:quiz', async(req, res) => {
 	}
 })
 
+app.get("/api/delete/:quiz", async (req, res) => {
+	const quizTitle = req.params.quiz
+	try {
+		const deleteQuiz = await Quiz.deleteMany({title: quizTitle})
+		console.log(deleteQuiz)
+		res.json({status: 'ok', deleteQuiz: deleteQuiz})
+	} catch (error) {
+		console.log(error)
+	}
+	
+})
+
   app.get("/*", (req, res) => {
 	res.send("404 error page doesn't exist, please return to the home page");
   });

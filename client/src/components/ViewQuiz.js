@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 
 
 
@@ -42,11 +42,10 @@ const ViewQuiz = () => {
 
 
     const listItems = 
-
     questions.questionsDB?.map((d) => 
         <> 
         <li key={d.question}>{d.question}</li>
-        
+        {accessLevel.access === 'edit' &&  
             <ol type='A'>
                 <li key={d.correctAnswer}>{d.correctAnswer}</li>
                 <li key={d.answer1}>{d.answer1}</li>
@@ -54,7 +53,16 @@ const ViewQuiz = () => {
                 <li key={d.answer3}>{d.answer3}</li>
                 <li key={d.answer4}>{d.answer4}</li>      
             </ol>
-
+        }
+                {accessLevel.access === 'view' &&  
+            <ol type='A'>
+                <li key={d.correctAnswer}>{d.correctAnswer}</li>
+                <li key={d.answer1}>{d.answer1}</li>
+                <li key={d.answer2}>{d.answer2}</li>
+                <li key={d.answer3}>{d.answer3}</li>
+                <li key={d.answer4}>{d.answer4}</li>      
+            </ol>
+}
         </>
 )
 
@@ -64,6 +72,13 @@ const ViewQuiz = () => {
             <ol>
                 {listItems}
             </ol>
+            {accessLevel.access === 'edit' &&                
+            <button type="submit">
+            <Link to={{
+                        pathname:`/delete/${quiz}`, 
+                         }}>Click to delete entire quiz</Link>
+            </button>         
+            }
         </div>
     )
 }

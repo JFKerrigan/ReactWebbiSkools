@@ -7,6 +7,7 @@ import Quizzes from './components/Quizzes';
 import Create from './components/Create';
 import Logout from './components/Logout';
 import ViewQuiz from './components/ViewQuiz';
+import Delete from './components/Delete'
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 				  <Route exact path='/quizzes' element={<Quizzes />} />
 				  <Route exact path='/create' element={<Create />} />
 				  <Route path='/viewQuiz/:quiz' element={<ViewQuiz />} />
+				  <Route path='/delete/:quiz' element={<Delete />} />
         		</Routes>
 			</BrowserRouter>
 		</div>
