@@ -28,8 +28,6 @@ body {
   width: 50%;
 }
 
-
-
 .label {
   margin-top: 10px;
 }
@@ -50,16 +48,32 @@ input[type=text] {
   height: 20px;
 }
 
+.satsuma {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15%;
+  margin-top: 20px; */
+}
+
+
 .banana {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-
+  justify-content: start;
+  width:200px; 
+  margin-top:20px;
 }
 
 .orange {
+  justify-content: center;
+  width: 80%;
+  
+}
+
+.quizList {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -73,4 +87,9 @@ input[type=text] {
 .test {
   font-size:x-large;
   justify-content: start;
+}
+
+.wrapper {
+  display: flex;
+
 }

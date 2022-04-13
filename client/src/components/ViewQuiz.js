@@ -46,7 +46,7 @@ const ViewQuiz = () => {
     const listItems = 
     questions.questionsDB?.map((d) => 
         <> 
-        <div class='container'>
+        <div class='satsuma'>
         <li class="test" key={d.question}>{d.question}</li>
         {accessLevel.access === 'edit' &&  
             <div class='orange'>

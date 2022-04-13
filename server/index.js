@@ -2,23 +2,20 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+const dotenv = require('dotenv');
 const User = require('./models/user.model')
 const Quiz = require('./models/quiz.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { db } = require('./models/user.model')
+dotenv.config({ path: './.env' });
 
 app.use(cors())
 app.use(express.json())
-const connectDB = async () => {
-    try {
-        await mongoose.connect("mongodb+srv://JennyK:H37m10n3@cluster0.zdits.mongodb.net/quiz?retryWrites=true&w=majority")
-        console.log("MongoDB is connected");
-    } catch (error) {
-        console.log(error);
-    }
-} 
-connectDB(); 
+mongoose
+  .connect(process.env.dbURL, { useNewURLParser: true
+  })
+  .then(() => console.log('MongoDB is connected'));
 
 // Register functionality not required in this iteration of the website
 app.post('/api/register', async (req, res) => {

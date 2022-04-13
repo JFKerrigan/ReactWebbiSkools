@@ -27,7 +27,7 @@ const Quizzes = (props) => {
     
 	
     return (
-        <div class="container">
+        <div class="available">
             <h1>Available Quiz Titles</h1>
             <div class="container">
                 {title.quiz?.map((item, index) => (
