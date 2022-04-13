@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="nav"
+  >
+    <a
+      href="/dashboard"
+      onClick={[Function]}
+    >
+      Dashboard
+    </a>
+    <div>
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        Logout
+      </a>
+    </div>
+  </div>
+  <div
+    class="container"
+  >
+    <h1>
+      Welcome to WebbiSkools
+    </h1>
+    <h3>
+      Please login to access your quizzes
+    </h3>
+    <button
+      class="button"
+    >
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </button>
+  </div>
+</div>
+`;

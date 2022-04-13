@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, BrowserRouter} from 'react-router-dom';
 import '../App.css'
 
 const Dashboard = () => {
@@ -44,18 +44,18 @@ const Dashboard = () => {
             <h2>Hello {userInfo.name}</h2>
             <h3>Welcome to your Quiz Manager</h3>
             <div>
-            {accessLevel.access === 'edit' &&                
-            <button type="submit" class='button'>
-                <Link to="/create" accessLevel={accessLevel}>
-                    Click here to create a new quiz
-                </Link>
-            </button>         
+            {accessLevel.access === 'edit' &&               
+                <button type="submit" class='button'>
+                    <Link to='/create' accessLevel={accessLevel}>
+                        Click here to create a new quiz
+                    </Link>
+                    </button>   
             }
-            <button type="submit" class='button'>
-                <Link to="/quizzes" accessLevel={accessLevel}>
-                    Click here to view available quizzes
-                </Link>
-            </button>
+                    <button type="submit" class='button'>
+                    <Link to='/quizzes' accessLevel={accessLevel}>
+                        Click here to view available quizzes
+                    </Link>
+                    </button>
             </div>
         </div>
     )

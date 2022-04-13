@@ -47,7 +47,7 @@ const ViewQuiz = () => {
     questions.questionsDB?.map((d) => 
         <> 
         <div class='container'>
-        <li key={d.question}>{d.question}</li>
+        <li class="test" key={d.question}>{d.question}</li>
         {accessLevel.access === 'edit' &&  
             <div class='orange'>
                 <ol type='A'>
@@ -61,7 +61,7 @@ const ViewQuiz = () => {
                 </ol>
             </div>
         }
-                {accessLevel.access === 'view' &&  
+        {accessLevel.access === 'view' &&  
             <ol type='A'>
                 <div> 
                 <li key={d.correctAnswer}>{d.correctAnswer}</li>
@@ -72,30 +72,26 @@ const ViewQuiz = () => {
                 </div>  
                    
             </ol>
-}</div>
+        }</div>
         </>
 )
 
     return (
         <div class='container'>
             <h1>{quiz} quiz</h1>
-            <div class='container'> 
-                <ol class="quizList">
-                    {listItems}
-                </ol>
-            </div>
-            <div class="container">
-                {accessLevel.access === 'edit' &&                
+            <ol class="quizList">
+                {listItems}
+            </ol>
+            {accessLevel.access === 'edit' &&                
                 <button type="submit" class="button">
                     <Link to={{
                         pathname:`/delete/${quiz}`, 
                         }}>Click to delete entire quiz</Link>
                 </button>         
-                }
-                <button class='button'>
-                    <Link to='/dashboard'>Return to dashboard</Link>
-                </button>
-            </div>
+            }
+            <button class='button'>
+                <Link to='/dashboard'>Return to dashboard</Link>
+            </button>   
         </div>
     )
 }

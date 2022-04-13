@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Dashboard from './Dashboard';
+import { Link } from 'react-router-dom';
 import Logout from './Logout'
 
 
 const Nav = () => {
+
     return (
         <div className="nav">
-            <Link to='/dashboard'>Dahsboard</Link>
+            <Link to='/dashboard'>Dashboard</Link>
             <Logout />
 
         </div>

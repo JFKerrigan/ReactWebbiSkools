@@ -22,14 +22,16 @@ function App() {
 
 		if (data.user) {
 			localStorage.setItem('token', data.user)
+			alert('Login successful')
 			window.location.href = '/dashboard'
 		} else {
 			alert('Please check your username and password')
+			
 		}
 	}
 
 	return (
-		<div class='container'>
+		<div className='container'>
 			<h1>Login</h1>
 			<form onSubmit={loginUser}>
 				<input
@@ -46,7 +48,7 @@ function App() {
 					placeholder="Password"
 				/>
 				<br />
-				<input class='button' type="submit" value="Login" />
+				<input className='button' type="submit" value="Login" name='submit' data-testid="loginButton"/>
 			</form>
 		</div>
 	)
