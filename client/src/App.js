@@ -7,15 +7,18 @@ import Quizzes from './components/Quizzes';
 import Create from './components/Create';
 import Logout from './components/Logout';
 import ViewQuiz from './components/ViewQuiz';
-import Delete from './components/Delete'
+import Delete from './components/Delete';
+import Edit from './components/Edit';
+import Nav from './components/Nav';
+import Home from './components/Home'
 
 const App = () => {
 	return (
 		<div>
-			
 			<BrowserRouter>
-			<Logout />
+			<Nav />
         		<Routes>
+				  <Route exact path="/" element={<Home />} />
 				  <Route exact path="/login" element={<Login />} />
 				  <Route exact path="/register" element={<Register />} />
 				  <Route exact path="/dashboard" element={<Dashboard />} />
@@ -23,6 +26,7 @@ const App = () => {
 				  <Route exact path='/create' element={<Create />} />
 				  <Route path='/viewQuiz/:quiz' element={<ViewQuiz />} />
 				  <Route path='/delete/:quiz' element={<Delete />} />
+				  <Route path='/edit/:quiz/:q' element={<Edit />} />
         		</Routes>
 			</BrowserRouter>
 		</div>

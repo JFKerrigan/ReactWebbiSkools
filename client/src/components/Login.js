@@ -29,7 +29,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<div class='container'>
 			<h1>Login</h1>
 			<form onSubmit={loginUser}>
 				<input
@@ -46,7 +46,7 @@ function App() {
 					placeholder="Password"
 				/>
 				<br />
-				<input type="submit" value="Login" />
+				<input class='button' type="submit" value="Login" />
 			</form>
 		</div>
 	)

@@ -18,7 +18,7 @@ const Delete = () => {
     return (
         <div>
             <h1>Quiz deleted</h1>
-            <button>
+            <button class=' button'>
                 <Link to="/dashboard">
                     Return to dashboard
                 </Link>

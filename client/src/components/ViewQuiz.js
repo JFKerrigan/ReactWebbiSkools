@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom';
+import '../App.css'
 
 
 
@@ -10,6 +11,7 @@ const ViewQuiz = () => {
     })
 
     const {quiz} = useParams()
+    
 
   
     useEffect(() => {
@@ -44,41 +46,56 @@ const ViewQuiz = () => {
     const listItems = 
     questions.questionsDB?.map((d) => 
         <> 
+        <div class='container'>
         <li key={d.question}>{d.question}</li>
         {accessLevel.access === 'edit' &&  
-            <ol type='A'>
-                <li key={d.correctAnswer}>{d.correctAnswer}</li>
-                <li key={d.answer1}>{d.answer1}</li>
-                <li key={d.answer2}>{d.answer2}</li>
-                <li key={d.answer3}>{d.answer3}</li>
-                <li key={d.answer4}>{d.answer4}</li>      
-            </ol>
+            <div class='orange'>
+                <ol type='A'>
+                    <div class='banana'>
+                    <li key={d.correctAnswer}>{d.correctAnswer}</li>
+                    <li key={d.answer1}>{d.answer1}</li>
+                    <li key={d.answer2}>{d.answer2}</li>
+                    <li key={d.answer3}>{d.answer3}</li>
+                    <li key={d.answer4}>{d.answer4}</li>     
+                    </div> 
+                </ol>
+            </div>
         }
                 {accessLevel.access === 'view' &&  
             <ol type='A'>
+                <div> 
                 <li key={d.correctAnswer}>{d.correctAnswer}</li>
                 <li key={d.answer1}>{d.answer1}</li>
                 <li key={d.answer2}>{d.answer2}</li>
                 <li key={d.answer3}>{d.answer3}</li>
-                <li key={d.answer4}>{d.answer4}</li>      
+                <li key={d.answer4}>{d.answer4}</li>   
+                </div>  
+                   
             </ol>
-}
+}</div>
         </>
 )
 
     return (
-        <div>
-            view quiz test
-            <ol>
-                {listItems}
-            </ol>
-            {accessLevel.access === 'edit' &&                
-            <button type="submit">
-            <Link to={{
+        <div class='container'>
+            <h1>{quiz} quiz</h1>
+            <div class='container'> 
+                <ol class="quizList">
+                    {listItems}
+                </ol>
+            </div>
+            <div class="container">
+                {accessLevel.access === 'edit' &&                
+                <button type="submit" class="button">
+                    <Link to={{
                         pathname:`/delete/${quiz}`, 
-                         }}>Click to delete entire quiz</Link>
-            </button>         
-            }
+                        }}>Click to delete entire quiz</Link>
+                </button>         
+                }
+                <button class='button'>
+                    <Link to='/dashboard'>Return to dashboard</Link>
+                </button>
+            </div>
         </div>
     )
 }

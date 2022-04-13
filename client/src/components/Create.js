@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import CreateQuestion from './CreateQuestion';
-import Button from './Button';
+import '../App.css';
 
 const Create = () => {
 
@@ -57,11 +56,11 @@ const Create = () => {
 	}
     return (
         
-        <div>
-            <h1>Create test</h1>
+        <div class='container'>
+            <h1>Create a new quiz</h1>
             <div>
 			<form onSubmit={registerQuiz}>
-                <label>Quiz Title</label>
+                <label class='label'>Quiz Title</label>
 				<input
           			value={title.code}
           			onChange={handleChangeValue}
@@ -69,7 +68,7 @@ const Create = () => {
 					placeholder="Title"
 				/>
 				<br />
-				<label>Question</label>
+				<label class='label'>Question</label>
 					<input
 						name="question"
 						id="question"
@@ -79,7 +78,7 @@ const Create = () => {
 						placeholder="Question"
 					/>
 					<br />
-					<label>Correct answer</label>
+					<label class='label'>Correct answer</label>
 					<br />
 					<input 
 						type="text" 
@@ -90,7 +89,7 @@ const Create = () => {
 						onChange={addQuestion}
 						/>
 					<br />
-					<label>Answers</label>
+					<label class='label'>Answers</label>
 					<br />
 					<input 
 						type="text" 
@@ -127,9 +126,9 @@ const Create = () => {
 						/>					
 					<br />
 					
-				<input type="submit" value="Create Question" />
+				<input class='button' type="submit" value="Create Question" />
 			</form>
-			<button>
+			<button class='button'>
 				<Link to='/dashboard'>Return to dashboard</Link>
 			</button>
 		</div>

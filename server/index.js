@@ -36,6 +36,10 @@ app.post('/api/register', async (req, res) => {
 	}
 })
 
+app.get('/', (req, res) => {
+	
+})
+
 app.post('/api/login', async (req, res) => {
 	const user = await User.findOne({
 		email: req.body.email,
@@ -144,6 +148,48 @@ app.get("/api/delete/:quiz", async (req, res) => {
 		console.log(error)
 	}
 	
+})
+
+app.get("/api/edit/:quiz/:q", async (req, res) => {
+	const quizQ = req.params.q
+	try {
+		const quizDB = await Quiz.find({question: quizQ});
+		console.log('jenny', quizDB)
+		res.json({
+		  quizDB : quizDB
+		  
+		});
+	  } catch (error) {
+		res.json(
+	  
+		);
+	  }
+})
+
+app.post("/api/edit/:quiz/:q", async (req, res) => {
+	const quizQ = req.params.q
+	const filter = await Quiz.find({question: quizQ});
+	const update = {question: req.body.question,
+	correctAnswer: req.body.correctAnswer,
+	answer1: req.body.answer1,
+	answer2: req.body.answer2,
+	answer3: req.body.answer3,
+	answer4: req.body.answer4,}
+
+	console.log(req.body, filter)
+	try {
+		const updateQuiz = await Quiz.findOneAndUpdate({filter}, {
+			question: req.body.question,
+			correctAnswer: req.body.correctAnswer,
+			answer1: req.body.answer1,
+			answer2: req.body.answer2,
+			answer3: req.body.answer3,
+			answer4: req.body.answer4,})
+		
+			res.json({status: 'ok', updateQuiz: updateQuiz})
+	} catch (error) {
+		console.log(error)
+	}
 })
 
   app.get("/*", (req, res) => {

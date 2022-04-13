@@ -27,26 +27,28 @@ const Quizzes = (props) => {
     
 	
     return (
-        <div>
-            <h1>Test</h1>
-            
+        <div class="container">
+            <h1>Available Quiz Titles</h1>
+            <div class="container">
                 {title.quiz?.map((item, index) => (
-                    <>
-                    <input type='radio' name="titles" key={index} value={item} onClick={(e) => setQuiz(e.target.value)}/>
-                    <h3>{item}</h3>
-                    </>
+                        <div class="available" >
+                            <input class="radio" type='radio' name="titles" key={index} value={item} onClick={(e) => setQuiz(e.target.value)}/>
+                            <h3>{item}</h3>
+                        </div>
                 ))}
-                <button>
-                    <Link to={{
-                        pathname:`/viewQuiz/${quiz}`, 
-                        state: quiz
-                         }}>View more details for this Title</Link>
-                </button>
-                
-            <button>
-                    <Link to='/dashboard'>Back to the dashboard </Link>
-            </button>
-
+                <div class='container'>
+                    <button class='button'>
+                        <Link to={{
+                            pathname:`/viewQuiz/${quiz}`, 
+                            state: quiz
+                            }}>View more details for this Title</Link>
+                    </button>
+                    
+                    <button class='button'>
+                        <Link to='/dashboard'>Back to the dashboard </Link>
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
