@@ -10,7 +10,7 @@ const Nav = () => {
             <Link to={{
                         pathname:`/dashboard
                     `}}>Dashboard</Link>
-            <Logout />
+            <Logout class="logoutLink"/>
 
         </div>
     )
