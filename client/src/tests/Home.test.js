@@ -1,7 +1,6 @@
 import { render, fireEvent,  screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {BrowserRouter} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 import * as React from 'react'
 import Home from '../components/Home';
 

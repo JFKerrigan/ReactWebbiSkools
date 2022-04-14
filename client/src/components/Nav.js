@@ -7,7 +7,9 @@ const Nav = () => {
 
     return (
         <div className="nav">
-            <Link to='/dashboard'>Dashboard</Link>
+            <Link to={{
+                        pathname:`/dashboard
+                    `}}>Dashboard</Link>
             <Logout />
 
         </div>

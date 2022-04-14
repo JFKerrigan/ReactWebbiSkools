@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  display:flex;
+  /* display:flex; */
   flex-direction:column;
   justify-content:center;
 }
@@ -48,16 +48,16 @@ input[type=text] {
   height: 20px;
 }
 
-.satsuma {
-  /* display: flex;
+.listQ {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 15%;
-  margin-top: 20px; */
+  width: 200px;
+  margin-top: 20px;
 }
 
 
-.banana {
+.answers {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -65,7 +65,7 @@ input[type=text] {
   margin-top:20px;
 }
 
-.orange {
+.allDetails {
   justify-content: center;
   width: 80%;
   
@@ -75,6 +75,16 @@ input[type=text] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.quizListCont {
+  display: flex;
+  justify-content: center;
+}
+
+.quizlist ol {
+  justify-content: center;
+  margin-left: 100px;
 }
 
 .nav {
@@ -92,4 +102,21 @@ input[type=text] {
 .wrapper {
   display: flex;
 
+}
+
+.quizButton {
+  display: flex;
+  justify-content: center;
+  border-radius: 8%;
+  width: 51%;
+  height: 70px;
+  justify-content: center;
+  margin: 20px;
+  background-color: lightyellow;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.buttonContainer  {
+  display: flex;
+  justify-content: center;
 }

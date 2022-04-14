@@ -46,12 +46,12 @@ const ViewQuiz = () => {
     const listItems = 
     questions.questionsDB?.map((d) => 
         <> 
-        <div class='satsuma'>
+        <div class='listQ'>
         <li class="test" key={d.question}>{d.question}</li>
         {accessLevel.access === 'edit' &&  
-            <div class='orange'>
+            <div class='allDetails'>
                 <ol type='A'>
-                    <div class='banana'>
+                    <div class='answers'>
                     <li key={d.correctAnswer}>{d.correctAnswer}</li>
                     <li key={d.answer1}>{d.answer1}</li>
                     <li key={d.answer2}>{d.answer2}</li>
@@ -63,7 +63,7 @@ const ViewQuiz = () => {
         }
         {accessLevel.access === 'view' &&  
             <ol type='A'>
-                <div> 
+                <div class='allDetails'> 
                 <li key={d.correctAnswer}>{d.correctAnswer}</li>
                 <li key={d.answer1}>{d.answer1}</li>
                 <li key={d.answer2}>{d.answer2}</li>
@@ -79,19 +79,23 @@ const ViewQuiz = () => {
     return (
         <div class='container'>
             <h1>{quiz} quiz</h1>
-            <ol class="quizList">
-                {listItems}
-            </ol>
+            <div class='quiz=ListCont'>
+                <ol class="quizList">
+                    {listItems}
+                </ol>
+            </div>
+            <div class="buttonContainer">
             {accessLevel.access === 'edit' &&                
-                <button type="submit" class="button">
+                <button type="submit" class="quizButton">
                     <Link to={{
                         pathname:`/delete/${quiz}`, 
                         }}>Click to delete entire quiz</Link>
                 </button>         
             }
-            <button class='button'>
+            <button class='quizButton'>
                 <Link to='/dashboard'>Return to dashboard</Link>
             </button>   
+            </div>
         </div>
     )
 }
