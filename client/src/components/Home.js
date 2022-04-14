@@ -6,7 +6,7 @@ const Home = () => {
         <div class="container">
             <h1>Welcome to WebbiSkools</h1>
             <h3>Please login to access your quizzes</h3>
-            <button class='button'>
+            <button class='button' data-testid="homeButton">
                 <Link to='/login'>Login</Link>
             </button>
         </div>
